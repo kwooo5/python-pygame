@@ -4,6 +4,7 @@ import random
 from pygame import mixer
 
 pygame.init()
+pygame.mixer.init()
 
 clock = pygame.time.Clock()
 fps = 60
@@ -15,7 +16,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Flappy cat')
 
 #load sound
-mixer.music.load('image/sound1.mp3')
+mixer.music.load('flappy/image/sound.wav')
 mixer.music.play()
 
 
@@ -40,10 +41,10 @@ pass_pipe = False
 
 
 #load images
-bg = pygame.image.load('image/bgf.jpeg')
+bg = pygame.image.load('flappy/image/bg.jpg')
 bg = pygame.transform.scale(bg,(screen_width,screen_height))
-ground_img = pygame.image.load('image/ground.png')
-button_img = pygame.image.load('image/restart.png')
+ground_img = pygame.image.load('flappy/image/ground.png')
+button_img = pygame.image.load('flappy/image/restart.png')
 
 
 
@@ -68,7 +69,7 @@ class Bird(pygame.sprite.Sprite):
 		self.index = 0
 		self.counter = 0
 		for num in range(1, 4):
-			img = pygame.image.load(f'image/cat{num}.png')
+			img = pygame.image.load(f'flappy/image/cat{num}.png')
 			self.images.append(img)
 		self.image = self.images[self.index]
 		self.rect = self.image.get_rect()
@@ -116,7 +117,7 @@ class Bird(pygame.sprite.Sprite):
 class Pipe(pygame.sprite.Sprite):
 	def __init__(self, x, y, position):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('image/pipe.png')
+		self.image = pygame.image.load('flappy/image/pipe.png')
 		self.rect = self.image.get_rect()
 		#position 1 is from the top, -1 is from the bottom
 		if position == 1:
@@ -244,3 +245,4 @@ while run:
 	pygame.display.update()
 
 pygame.quit()
+
